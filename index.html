@@ -1,212 +1,547 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rather Editz | Portfolio</title>
 
-<meta name="google-site-verification" content="XSjd0ZBGOt8mRPKMx9FPstoG68xWs_-lTbSa7B_UoL0" />
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:system-ui,Arial;
+background:#0f0c29;
+color:#fff;
+overflow-x:hidden;
+}
 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+/* ---------- ABOUT DEVELOPER ---------- */
+.about-card{
+background:rgba(255,255,255,.2);
+backdrop-filter:blur(14px);
+border-radius:24px;
+padding:18px;
+box-shadow:0 10px 30px rgba(0,0,0,.45);
+line-height:1.6;
+}
 
-        <link rel="stylesheet" href="assets/css/styles.css">
+.about-card h3{
+font-size:16px;
+margin-bottom:8px;
+}
 
-        <!-- =====BOX ICONS===== -->
-        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+.about-card p{
+font-size:12px;
+opacity:.9;
+margin-bottom:10px;
+}
 
-        <title>Portfolio website complete</title>
-    </head>
-    <body>
-        <!--===== HEADER =====-->
-        <header class="l-header">
-            <nav class="nav bd-grid">
-                <div>
-                    <a href="#" class="nav__logo">Rather Aabid</a>
-                </div>
+.about-tags{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+margin-top:10px;
+}
 
-                <div class="nav__menu" id="nav-menu">
-                    <ul class="nav__list">
-                        <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
-                        <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-                        <li class="nav__item"><a href="#skills" class="nav__link">Skills</a></li>
-                        <li class="nav__item"><a href="#work" class="nav__link">Work</a></li>
-                        <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
-                    </ul>
-                </div>
+.about-tag{
+background:rgba(255,255,255,.25);
+padding:6px 12px;
+border-radius:18px;
+font-size:11px;
+font-weight:bold;
+}
 
-                <div class="nav__toggle" id="nav-toggle">
-                    <i class='bx bx-menu'></i>
-                </div>
-            </nav>
-        </header>
+.about-contact{
+margin-top:14px;
+display:inline-block;
+padding:8px 18px;
+border-radius:22px;
+background:#fff;
+color:#4f46e5;
+font-size:11px;
+font-weight:bold;
+text-decoration:none;
+}
 
-        <main class="l-main">
-            <!--===== HOME =====-->
-            <section class="home bd-grid" id="home">
-                <div class="home__data">
-                    <h1 class="home__title">Hi,<br>I'am <span class="home__title-color">Rather Aabid</span><br> Developer</h1>
+/* ---------- ACHIEVEMENTS ---------- */
+.achievement{
+background:rgba(255,255,255,.22);
+backdrop-filter:blur(14px);
+border-radius:22px;
+padding:16px;
+margin-bottom:14px;
+box-shadow:0 10px 28px rgba(0,0,0,.45);
+display:flex;
+gap:14px;
+align-items:flex-start;
+transition:.2s;
+}
 
-                    <a href="https://www.instagram.com/ohh_itz__a._.bid__/" class="button">Contact</a>
-                </div>
+.achievement:active{
+transform:scale(.95);
+}
 
-                <div class="home__social">
-<a href="" class="home__social-ic"><i class='bx bxl-linked'></i></a>
+.ach-icon{
+width:48px;
+height:48px;
+border-radius:14px;
+background:rgba(255,255,255,.3);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:22px;
+}
 
-                    <a href="" class="home__social-ic"><i class='bx bxl-behan' ></i></a>
+.ach-content h3{
+font-size:14px;
+margin-bottom:4px;
+}
 
-                    <a href="" class="home__social-ic"><i class='bx bxl-gith' ></i></a>
+.ach-content p{
+font-size:11px;
+opacity:.85;
+line-height:1.5;
+}
 
-               
-                </div>
+/* ---------- CLIENT FEEDBACK ---------- */
+.feedback{
+background:rgba(255,255,255,.22);
+backdrop-filter:blur(14px);
+border-radius:22px;
+padding:16px;
+margin-bottom:14px;
+box-shadow:0 10px 28px rgba(0,0,0,.45);
+transition:.25s;
+}
 
-                <div class="home__img">
-                    <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <mask id="mask0" mask-type="alpha">
-                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
-                        </mask>
-                        <g mask="url(#mask0)">
-                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
-                            <image class="home__blob-img" x="50" y="60" href="assets/img/perfil.png"/>
-                        </g>
-                    </svg>
-                </div>
-            </section>
+.feedback:active{
+transform:scale(.95);
+}
 
-            <!--===== ABOUT =====-->
-            <section class="about section " id="about">
-                <h2 class="section-title">About</h2>
+.client{
+display:flex;
+align-items:center;
+gap:12px;
+margin-bottom:10px;
+}
 
-                <div class="about__container bd-grid">
-                    <div class="about__img">
-                        <img src="assets/img/about.jpg" alt="">
-                    </div>
-                    
-                    <div>
-                        <h2 class="about__subtitle">I'am Rather Abid</h2>
-                        <p class="about__text">I Am Rather Aabid a software engineer, designer, and web developer from Kashmir I describes myself as a student‑friendly developer I created JKBOSE Helper and several other helpful websites  I enjoys building simple and useful tools to make studying easier. my goal is to support students, share knowledge, and make education more accessible</p>           
-                    </div>                                   
-                </div>
-            </section>
+.client img{
+width:45px;
+height:45px;
+border-radius:50%;
+object-fit:cover;
+border:2px solid rgba(255,255,255,.6);
+}
 
-            <!--===== SKILLS =====-->
-            <section class="skills section" id="skills">
-                <h2 class="section-title">Skills</h2>
+.client-info h3{
+font-size:13px;
+}
 
-                <div class="skills__container bd-grid">          
-                    <div>
-                        <h2 class="skills__subtitle">Profesional Skills</h2>
-                        <p class="skills__text">I am masking website bots etc</p>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxl-html5 skills__icon'></i>
-                                <span class="skills__name">HTML</span>
-                            </div>
-                            <div class="skills__bar skills__html">
+.client-info p{
+font-size:10px;
+opacity:.8;
+}
 
-                            </div>
-                            <div>
-                                <span class="skills__percentage">50%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxl-css3 skills__icon'></i>
-                                <span class="skills__name">CSS</span>
-                            </div>
-                            <div class="skills__bar skills__css">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">45%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxl-javascript skills__icon' ></i>
-                                <span class="skills__name">JAVASCRIPT</span>
-                            </div>
-                            <div class="skills__bar skills__js">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">40%</span>
-                            </div>
-                        </div>
-                        <div class="skills__data">
-                            <div class="skills__names">
-                                <i class='bx bxs-paint skills__icon'></i>
-                                <span class="skills__name">UX/UI</span>
-                            </div>
-                            <div class="skills__bar skills__ux">
-                                
-                            </div>
-                            <div>
-                                <span class="skills__percentage">20%</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div>              
-                        <img src="assets/img/work3.jpg" alt="" class="skills__img">
-                    </div>
-                </div>
-            </section>
+.stars{
+color:#FFD700;
+font-size:14px;
+margin-bottom:6px;
+}
 
-            <!--===== WORK =====-->
-            <section class="work section" id="work">
-                <h2 class="section-title">Work</h2>
+.feedback-text{
+font-size:11px;
+opacity:.9;
+line-height:1.6;
+}
 
-                <div class="work__container bd-grid">
-                    <a href="" class="work__img">
-                        <img src="assets/img/work1.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work2.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work3.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work4.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work5.jpg" alt="">
-                    </a>
-                    <a href="" class="work__img">
-                        <img src="assets/img/work6.jpg" alt="">
-                    </a>
-                </div>
-            </section>
+/* ---------- SVG BACKGROUND ---------- */
+.svg-bg{
+position:fixed;
+top:0;left:0;
+width:100%;
+height:100%;
+z-index:-1;
+}
 
-            <!--===== CONTACT =====-->
-            <section class="contact section" id="contact">
-                <h2 class="section-title">Contact</h2>
+/* ---------- HERO ---------- */
+.hero{
+padding:50px 20px 80px;
+text-align:center;
+}
 
-                <div class="contact__container bd-grid">
-                    <form action="" class="contact__form">
-                        <input type="text" placeholder="Name" class="contact__input">
-                        <input type="mail" placeholder="Email" class="contact__input">
-                        <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
-                        <input type="button" value="Submit" class="contact__button button">
-                    </form>
-                </div>
-            </section>
-        </main>
+.profile{
+width:120px;
+height:120px;
+border-radius:50%;
+border:4px solid rgba(255,255,255,.9);
+object-fit:cover;
+box-shadow:0 12px 30px rgba(0,0,0,.5);
+}
 
-        <!--===== FOOTER =====-->
-        <footer class="footer">
-            <p class="footer__title">Rather Abid</p>
-            <div class="footer__social">
-                <a href="https://m.facebook.com/107674694927399" class="footer__icon"><i class='bx bxl-facebook' ></i></a>
-                <a href="https://www.instagram.com/ohh_itz__a._.bid__/" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
-                
-            </div>
-            <p class="footer__copy">&#169; Rather Abid All rigths reserved</p>
-        </footer>
+.hero h1{
+margin-top:14px;
+font-size:24px;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+flex-wrap:wrap;
+}
 
+.contact-btn{
+padding:6px 14px;
+border-radius:20px;
+font-size:11px;
+font-weight:bold;
+background:#fff;
+color:#4f46e5;
+text-decoration:none;
+}
 
-        <!--===== SCROLL REVEAL =====-->
-        <script src="https://unpkg.com/scrollreveal"></script>
+.hero p{
+font-size:13px;
+opacity:.9;
+margin-top:5px;
+}
 
-        <!--===== MAIN JS =====-->
-        <script src="assets/js/main.js"></script>
-    </body>
+/* ---------- COUNTERS ---------- */
+.stats{
+display:flex;
+justify-content:center;
+gap:12px;
+margin-top:25px;
+flex-wrap:wrap;
+}
+
+.stat{
+background:rgba(255,255,255,.18);
+backdrop-filter:blur(12px);
+padding:14px 18px;
+border-radius:18px;
+min-width:95px;
+box-shadow:0 8px 25px rgba(0,0,0,.4);
+}
+
+.stat h2{font-size:20px}
+.stat p{font-size:11px;opacity:.8}
+
+/* ---------- SECTION ---------- */
+.section{
+padding:30px 15px;
+}
+
+.section h2{
+font-size:17px;
+margin-bottom:15px;
+}
+
+/* ---------- WEBSITE CARD ---------- */
+.card{
+background:rgba(255,255,255,.2);
+backdrop-filter:blur(14px);
+border-radius:22px;
+padding:15px;
+margin-bottom:15px;
+display:flex;
+align-items:center;
+gap:12px;
+box-shadow:0 10px 30px rgba(0,0,0,.45);
+}
+
+.logo{
+width:55px;
+height:55px;
+border-radius:14px;
+object-fit:cover;
+}
+
+.info{flex:1}
+.info h3{font-size:14px}
+.info p{font-size:11px;opacity:.8;margin-top:4px}
+
+.btn{
+padding:8px 16px;
+border-radius:25px;
+background:#fff;
+color:#4f46e5;
+font-size:11px;
+font-weight:bold;
+text-decoration:none;
+}
+
+/* ---------- APP LIST ---------- */
+.app-list{
+display:flex;
+gap:14px;
+overflow-x:auto;
+padding-bottom:10px;
+}
+
+.app-list::-webkit-scrollbar{display:none}
+
+.app-card{
+min-width:180px;
+background:rgba(255,255,255,.2);
+backdrop-filter:blur(14px);
+border-radius:22px;
+padding:14px;
+box-shadow:0 10px 30px rgba(0,0,0,.45);
+}
+
+.app-card img{
+width:60px;
+height:60px;
+border-radius:16px;
+margin-bottom:8px;
+}
+
+.app-card h3{font-size:13px}
+.app-card p{font-size:11px;opacity:.8;margin:6px 0}
+
+.download{
+display:inline-block;
+padding:7px 16px;
+border-radius:22px;
+background:#fff;
+color:#4f46e5;
+font-size:11px;
+font-weight:bold;
+text-decoration:none;
+}
+
+/* ---------- SKILLS ---------- */
+.skills{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.skill{
+padding:8px 14px;
+border-radius:20px;
+background:rgba(255,255,255,.25);
+font-size:11px;
+font-weight:bold;
+}
+
+/* ---------- FOOTER ---------- */
+.footer{
+text-align:center;
+font-size:11px;
+opacity:.8;
+padding:25px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SVG BACKGROUND -->
+<svg class="svg-bg" viewBox="0 0 1440 800" preserveAspectRatio="none">
+<defs>
+<linearGradient id="grad" gradientTransform="rotate(45)">
+<stop offset="0%" stop-color="#8b3cf6"/>
+<stop offset="100%" stop-color="#4f46e5"/>
+</linearGradient>
+</defs>
+<path fill="url(#grad)" opacity="0.8">
+<animate attributeName="d" dur="12s" repeatCount="indefinite"
+values="
+M0,400 C300,300 600,500 900,400 1200,300 1440,400 1440,400 L1440,0 L0,0 Z;
+M0,350 C300,450 600,300 900,450 1200,550 1440,350 1440,350 L1440,0 L0,0 Z;
+M0,400 C300,300 600,500 900,400 1200,300 1440,400 1440,400 L1440,0 L0,0 Z"/>
+</path>
+</svg>
+
+<!-- HERO -->
+<div class="hero">
+<img src="https://i.ibb.co/N2bhwhgQ/IMG-20251221-101547.jpg" class="profile">
+<h1>Rather Aabid <a class="contact-btn" href="https://www.instagram.com/ohh_itz__a._.bid__">Contact</a></h1>
+<p>Android & Web Developer</p>
+
+<div class="stats">
+<div class="stat"><h2 id="apps">0</h2><p>Apps</p></div>
+<div class="stat"><h2 id="sites">0</h2><p>Websites</p></div>
+<div class="stat"><h2 id="users">0</h2><p>Users</p></div>
+</div>
+</div>
+
+<!-- ABOUT DEVELOPER -->
+<div class="section">
+    <h2>👨‍💻 About Developer</h2>
+    
+    <div class="about-card">
+        <h3>Rather Aabid</h3>
+        
+        <p>
+            I am Rather Aabid <b>a student-friendly developer</b>  who created JKBose Helper along with several helpful websites. I enjoy building simple and useful tools that make studying easier for everyone. I work quietly, stay focused, and keep improving my projects day by day.
+        </p>
+        
+        <p>
+            My Goal is <b> support students</b>, share knowledge, and make education easier and more accessible
+        </p>
+        
+        <div class="about-tags">
+            <div class="about-tag">Android Apps</div>
+            <div class="about-tag">Education Apps</div>
+            <div class="about-tag">WebView Apps</div>
+            <div class="about-tag">UI / UX</div>
+        </div>
+        
+        
+    </div>
+</div>
+
+<!-- APPLICATIONS -->
+<div class="section">
+<h2>📱 My Applications</h2>
+
+<div class="app-list">
+<div class="app-card">
+<img src="https://i.ibb.co/F4hmrR0Y/JKBose-Helper-20251118-185512.jpg">
+<h3>JKBOSE Helper</h3>
+<p>JKBose Helper is a simple education app for JKBOSE students, offering results, study materials, updates, and learning support in one place.</p>
+<a class="download" href="https://jk-bose-helper.vercel.app/">Download</a>
+</div>
+
+<div class="app-card">
+<img src="https://i.ibb.co/DPs0v1W3/1767343087641.png">
+<h3>Tasbih Counter</h3>
+<p>The Tasbih Counter is a simple tool designed to help Muslims count dhikr, tasbih, and duas with ease and concentration.</p>
+<a class="download" href="#">Download</a>
+</div>
+</div>
+</div>
+
+<!-- WEBSITES -->
+<div class="section">
+<h2>🌐 My Websites</h2>
+
+<div class="card">
+<img src="https://i.ibb.co/v4DXBJnC/IMG-20260102-210750-727.jpg" class="logo">
+<div class="info">
+<h3>Study Update</h3>
+<p>All Education News And Updates</p>
+</div>
+<a class="btn" href="studyupdate6.blogspot.com/?m=1">Visit</a>
+</div>
+</div>
+
+<!-- ACHIEVEMENTS -->
+<div class="section">
+    <h2>🏆 Achievements</h2>
+    
+    <div class="achievement">
+        <div class="ach-icon">🚀</div>
+        <div class="ach-content">
+            <h3>2+ Android Applications</h3>
+            <p>
+                Successfully developed and published multiple Android apps focused on
+                education, results, and productivity.
+            </p>
+        </div>
+    </div>
+    
+    <div class="achievement">
+        <div class="ach-icon">🌐</div>
+        <div class="ach-content">
+            <h3>5+ Websites & Portals</h3>
+            <p>
+                Created fast, responsive websites including result portals and learning platforms.
+            </p>
+        </div>
+    </div>
+    
+    <div class="achievement">
+        <div class="ach-icon">👥</div>
+        <div class="ach-content">
+            <h3>85000+ Active Users</h3>
+            <p>
+                Applications and websites actively used by thousands of students and users.
+            </p>
+        </div>
+    </div>
+    
+    
+</div>
+
+<!-- CLIENT FEEDBACK -->
+<div class="section">
+<h2>💬 Client Feedback</h2>
+
+<div class="feedback">
+<div class="client">
+<div class="client-info">
+<h3>Ritik Sharma</h3>
+</div>
+</div>
+
+<div class="stars">★★★★★</div>
+
+<p class="feedback-text">
+Rather Aabid is an amazing developer! His apps are easy to use, reliable, and super helpful for students. Truly dedicated and creative!
+</p>
+</div>
+
+<div class="feedback">
+<div class="client">
+<div class="client-info">
+<h3>Asif Bhat</h3>
+</div>
+</div>
+
+<div class="stars">★★★★★</div>
+
+<p class="feedback-text">
+"Amazing Android app with material design and smooth animations.
+Works perfectly on all devices. Great support!"
+</p>
+</div>
+
+<div class="feedback">
+<div class="client">
+<div class="client-info">
+<h3>Farhana Riyaz </h3>
+</div>
+</div>
+
+<div class="stars">★★★★☆</div>
+
+<p class="feedback-text">
+Rather Aabid is brilliant and trustworthy. His apps make learning easy and fun for every student!
+</p>
+</div>
+
+</div>
+<!-- SKILLS -->
+<div class="section">
+<h2>🛠 Skills</h2>
+<div class="skills">
+<div class="skill">Sketchware</div>
+<div class="skill">HTML</div>
+<div class="skill">CSS</div>
+<div class="skill">JavaScript</div>
+<div class="skill">Firebase</div>
+</div>
+</div>
+
+<div class="footer">
+© 2025 | Developed by Rather Aabid
+</div>
+
+<script>
+function counter(id,target){
+let i=0;
+let el=document.getElementById(id);
+let t=setInterval(()=>{
+i++;
+el.innerText=i;
+if(i>=target)clearInterval(t);
+},25);
+}
+counter("apps",2);
+counter("sites",5);
+counter("users",12000);
+</script>
+
+</body>
 </html>
