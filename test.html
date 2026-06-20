@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Govt. Higher Secondary School Vehil</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+:root{
+  --blue:       #1557a0;
+  --blue2:      #1a6fc4;
+  --blue3:      #2e8de8;
+  --sky:        #e6f2ff;
+  --sky2:       #f2f8ff;
+  --white:      #ffffff;
+  --ink:        #0b1f38;
+  --ink2:       #2a4568;
+  --gray:       #7090b0;
+  --muted:      #c5d8ec;
+  --gold:       #e8a020;
+  --gold2:      #ffc847;
+  --green:      #0f9e68;
+  --red:        #d94040;
+  --violet:     #6b4fd4;
+  --r:14px;--rs:8px;
+  --sh:0 4px 24px rgba(21,87,160,.10);
+  --shm:0 10px 40px rgba(21,87,160,.16);
+  --shl:0 24px 70px rgba(21,87,160,.20);
+}
+
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--ink);overflow-x:hidden;line-height:1.6;}
+::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:var(--sky);}::-webkit-scrollbar-thumb{background:var(--blue);border-radius:10px;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+
+/* ─ TICKER ─ */
+.ticker{background:var(--blue);overflow:hidden;padding:9px 0;display:flex;align-items:center;}
+.ticker-pill{background:var(--gold);color:#fff;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 20px 4px 16px;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 50%,calc(100% - 10px) 100%,0 100%);white-space:nowrap;flex-shrink:0;}
+.ticker-track{overflow:hidden;flex:1;}
+.ticker-run{display:inline-block;white-space:nowrap;font-size:12.5px;color:rgba(255,255,255,.9);animation:tick 30s linear infinite;padding-left:40px;}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ─ NAV ─ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 44px;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid rgba(21,87,160,.08);transition:box-shadow .3s;}
+.nav.up{box-shadow:var(--shm);}
+.brand{display:flex;align-items:center;gap:11px;}
+.brand-badge{width:40px;height:40px;background:linear-gradient(135deg,var(--blue),var(--blue2));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;box-shadow:0 4px 14px rgba(21,87,160,.35);}
+.brand-words strong{display:block;font-size:13.5px;font-weight:700;color:var(--ink);}
+.brand-words span{font-size:10.5px;color:var(--gray);font-weight:400;letter-spacing:.3px;}
+.nav-ul{display:flex;align-items:center;gap:2px;list-style:none;}
+.nav-ul a{padding:7px 15px;border-radius:7px;font-size:13px;font-weight:500;color:var(--ink2);transition:background .18s,color .18s;}
+.nav-ul a:hover{background:var(--sky);color:var(--blue);}
+.nav-ul a.on{background:var(--blue);color:#fff;}
+.nav-cta-btn{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff !important;padding:8px 20px !important;border-radius:50px !important;font-weight:600 !important;box-shadow:0 4px 14px rgba(21,87,160,.30);transition:transform .2s,box-shadow .2s !important;}
+.nav-cta-btn:hover{transform:translateY(-1px);box-shadow:0 7px 22px rgba(21,87,160,.40) !important;background:var(--sky) !important;color:var(--blue) !important;}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;}
+.burger b{width:22px;height:2px;background:var(--ink);border-radius:2px;display:block;transition:.28s;}
+.mob-nav{display:none;position:fixed;top:66px;left:0;right:0;z-index:899;background:#fff;border-bottom:1px solid var(--muted);padding:14px 18px 20px;box-shadow:var(--shm);flex-direction:column;gap:3px;}
+.mob-nav.open{display:flex;}
+.mob-nav a{padding:11px 15px;border-radius:8px;font-size:14px;font-weight:500;color:var(--ink2);}
+.mob-nav a:hover{background:var(--sky);color:var(--blue);}
+
+/* ─ HERO ─ */
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding-bottom:60px;overflow:hidden;
+}
+
+/* School image background - user replaces the gradient with their image */
+.hero-bg-img{
+  position:absolute;inset:0;z-index:0;
+  background:
+    /* Replace this url() with your school image: url('your-school-photo.jpg') */
+    linear-gradient(160deg,#c8def8 0%,#a8c8f0 30%,#7aaee0 60%,#5090d0 100%);
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+/* Low-visibility overlay so text is always readable */
+.hero-bg-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(
+    170deg,
+    rgba(11,31,56,.82) 0%,
+    rgba(11,31,56,.68) 35%,
+    rgba(11,31,56,.55) 60%,
+    rgba(11,31,56,.80) 100%
+  );
+}
+/* Subtle noise texture for depth */
+.hero-bg-noise{
+  position:absolute;inset:0;z-index:2;
+  opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat:repeat;
+  background-size:200px 200px;
+}
+
+.hero-content{
+  position:relative;z-index:3;
+  max-width:1220px;margin:0 auto;width:100%;
+  padding:0 44px;
+  display:grid;grid-template-columns:1fr 380px;gap:50px;align-items:flex-end;
+}
+
+.hero-left{animation:up .8s .1s both;}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);
+  backdrop-filter:blur(10px);border-radius:50px;
+  padding:6px 16px;font-size:11px;font-weight:600;
+  color:rgba(255,255,255,.9);letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:22px;
+}
+.hero-eyebrow-dot{width:7px;height:7px;background:var(--gold2);border-radius:50%;animation:blink 2s ease infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+.hero-h1{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(38px,5.5vw,70px);
+  color:#fff;line-height:1.08;margin-bottom:18px;
+  text-shadow:0 2px 20px rgba(0,0,0,.25);
+}
+.hero-h1 em{color:var(--gold2);font-style:italic;}
+
+.hero-sub{font-size:15px;color:rgba(255,255,255,.78);max-width:520px;line-height:1.85;margin-bottom:32px;}
+
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px;}
+.btn-w{
+  background:#fff;color:var(--blue);padding:13px 28px;border-radius:50px;
+  font-size:13.5px;font-weight:700;box-shadow:0 6px 22px rgba(0,0,0,.18);
+  transition:transform .2s,box-shadow .2s;display:inline-block;
+}
+.btn-w:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.24);}
+.btn-ghost{
+  background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.35);
+  color:#fff;padding:12px 26px;border-radius:50px;font-size:13.5px;font-weight:600;
+  backdrop-filter:blur(8px);transition:background .2s,transform .2s;display:inline-block;
+}
+.btn-ghost:hover{background:rgba(255,255,255,.22);transform:translateY(-2px);}
+
+/* Hero stat chips */
+.hero-chips{display:flex;gap:10px;flex-wrap:wrap;}
+.hchip{
+  background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.20);
+  backdrop-filter:blur(10px);border-radius:50px;
+  padding:7px 16px;font-size:12px;font-weight:600;color:#fff;
+  display:inline-flex;align-items:center;gap:7px;
+}
+.hchip-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+
+/* Hero info card */
+.hero-card{
+  background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.20);
+  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+  border-radius:20px;padding:28px;
+  animation:up .8s .3s both;
+}
+.hcard-head{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.15);}
+.hcard-icon{width:44px;height:44px;background:rgba(255,255,255,.15);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;}
+.hcard-title{font-family:'DM Serif Display',serif;font-size:16px;color:#fff;line-height:1.2;}
+.hcard-sub{font-size:11px;color:rgba(255,255,255,.6);margin-top:2px;}
+.hcard-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);}
+.hcard-row:last-of-type{border-bottom:none;padding-bottom:0;}
+.hcard-label{font-size:12px;color:rgba(255,255,255,.65);}
+.hcard-val{font-size:12.5px;font-weight:700;color:#fff;}
+.hcard-pill{background:rgba(255,255,255,.15);border-radius:50px;padding:3px 11px;font-size:11px;color:rgba(255,255,255,.9);}
+
+/* scroll hint */
+.hero-scroll{
+  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
+  z-index:3;display:flex;flex-direction:column;align-items:center;gap:7px;
+  animation:up 1s .9s both;
+}
+.hero-scroll span{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5);}
+.scroll-mouse{width:20px;height:32px;border:2px solid rgba(255,255,255,.3);border-radius:10px;display:flex;justify-content:center;padding-top:5px;}
+.scroll-mouse::before{content:'';width:3px;height:6px;background:rgba(255,255,255,.6);border-radius:2px;animation:sd 1.8s ease infinite;}
+@keyframes sd{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(9px)}}
+
+/* top padding for ticker + nav */
+.hero-spacer{height:calc(66px + 38px);}
+
+/* ─ STATS STRIP ─ */
+.stats-strip{background:#fff;border-bottom:1px solid rgba(21,87,160,.08);}
+.stats-inner{max-width:1220px;margin:0 auto;padding:0 44px;display:grid;grid-template-columns:repeat(4,1fr);}
+.stat-cell{padding:28px 24px;display:flex;align-items:center;gap:14px;border-right:1px solid rgba(21,87,160,.08);}
+.stat-cell:last-child{border-right:none;}
+.stat-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0;}
+.si-blue{background:#dbeeff;} .si-green{background:#d4f5e7;} .si-gold{background:#fff3d4;} .si-violet{background:#ece8ff;}
+.stat-num{font-family:'DM Serif Display',serif;font-size:26px;color:var(--ink);line-height:1;}
+.stat-lbl{font-size:11px;color:var(--gray);margin-top:2px;letter-spacing:.3px;}
+
+/* ─ SECTION BASE ─ */
+.sec{padding:88px 44px;}
+.sec-inner{max-width:1220px;margin:0 auto;}
+.sec-tag{font-size:10.5px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--blue2);display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.sec-tag::before{content:'';width:24px;height:2px;background:var(--blue2);border-radius:2px;}
+.sec-h{font-family:'DM Serif Display',serif;font-size:clamp(28px,3.5vw,46px);color:var(--ink);line-height:1.15;margin-bottom:14px;}
+.sec-h em{color:var(--blue2);font-style:italic;}
+.sec-p{font-size:14.5px;color:var(--gray);line-height:1.85;max-width:520px;margin-bottom:48px;}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.on{opacity:1;transform:none;}
+
+/* ─ ABOUT ─ */
+.about-sec{background:var(--sky2);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
+.about-img{position:relative;}
+.about-img-box{
+  border-radius:22px;overflow:hidden;height:400px;
+  background:linear-gradient(135deg,var(--blue) 0%,var(--blue2) 50%,#5baee8 100%);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:var(--shl);position:relative;
+}
+.about-img-box::after{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23fff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E");
+}
+.about-big-icon{font-size:90px;position:relative;z-index:1;filter:drop-shadow(0 8px 24px rgba(0,0,0,.25));animation:float 4s ease infinite;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.about-corner-card{
+  position:absolute;background:#fff;border-radius:14px;
+  padding:13px 17px;box-shadow:var(--shm);display:flex;align-items:center;gap:10px;
+  border:1px solid rgba(21,87,160,.07);
+}
+.acc-1{top:-18px;left:-18px;} .acc-2{bottom:-18px;right:-18px;}
+.acc-icon{font-size:22px;}
+.acc-t strong{display:block;font-size:13px;font-weight:700;color:var(--ink);}
+.acc-t span{font-size:11px;color:var(--gray);}
+.about-feats{display:flex;flex-direction:column;gap:13px;margin:28px 0;}
+.feat-row{display:flex;align-items:flex-start;gap:12px;font-size:13.5px;color:var(--ink2);line-height:1.55;}
+.feat-row::before{content:'✓';min-width:24px;height:24px;background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;margin-top:1px;}
+.chips-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px;}
+.chip{background:var(--sky);border:1px solid rgba(21,87,160,.14);color:var(--blue);border-radius:50px;padding:5px 15px;font-size:12px;font-weight:600;}
+
+/* ─ STREAMS ─ */
+.streams-sec{background:#fff;}
+.streams-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.stream-card{
+  border-radius:var(--r);overflow:hidden;
+  border:1px solid rgba(21,87,160,.09);
+  box-shadow:var(--sh);
+  transition:transform .25s,box-shadow .25s,border-color .25s;
+  background:#fff;
+}
+.stream-card:hover{transform:translateY(-6px);box-shadow:var(--shm);border-color:rgba(21,87,160,.22);}
+.stream-header{padding:30px 26px 24px;position:relative;overflow:hidden;}
+.sh-blue{background:linear-gradient(135deg,#0f4f96,var(--blue2));}
+.sh-green{background:linear-gradient(135deg,#0a6e46,var(--green));}
+.sh-violet{background:linear-gradient(135deg,#432fa8,var(--violet));}
+.stream-header::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.08);}
+.stream-header::after{content:'';position:absolute;bottom:-20px;left:-20px;width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.06);}
+.stream-icon{font-size:36px;margin-bottom:12px;position:relative;z-index:1;}
+.stream-name{font-family:'DM Serif Display',serif;font-size:22px;color:#fff;margin-bottom:4px;position:relative;z-index:1;}
+.stream-tagline{font-size:12px;color:rgba(255,255,255,.72);position:relative;z-index:1;letter-spacing:.3px;}
+.stream-body{padding:24px 26px;}
+.stream-subjects{display:flex;flex-direction:column;gap:9px;margin-bottom:20px;}
+.subj-row{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--ink2);}
+.subj-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.dot-blue{background:var(--blue2);} .dot-green{background:var(--green);} .dot-violet{background:var(--violet);}
+.stream-divider{height:1px;background:var(--muted);margin:18px 0;}
+.stream-footer{display:flex;justify-content:space-between;align-items:center;}
+.sf-label{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:1px;}
+.sf-val{font-size:12.5px;font-weight:700;color:var(--ink);}
+
+/* ─ BOOKS & CURRICULUM ─ */
+.books-sec{background:var(--sky2);}
+.books-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.book-shelf{display:flex;flex-direction:column;gap:12px;}
+.book-row{
+  background:#fff;border:1px solid rgba(21,87,160,.09);border-radius:var(--r);
+  padding:16px 20px;display:flex;gap:16px;align-items:center;
+  box-shadow:var(--sh);transition:transform .2s,box-shadow .2s,border-color .2s;
+  cursor:default;
+}
+.book-row:hover{transform:translateX(5px);box-shadow:var(--shm);border-color:rgba(21,87,160,.20);}
+.book-spine{
+  width:10px;border-radius:3px;align-self:stretch;flex-shrink:0;
+  min-height:52px;
+}
+.book-info{flex:1;}
+.book-title{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:3px;}
+.book-meta{font-size:11.5px;color:var(--gray);}
+.book-badge{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:3px 10px;border-radius:50px;flex-shrink:0;}
+.bb-core{background:#dbeeff;color:var(--blue);}
+.bb-lang{background:#d4f5e7;color:var(--green);}
+.bb-sci{background:#fff0cc;color:#b07300;}
+.bb-opt{background:#ece8ff;color:var(--violet);}
+.bb-voc{background:#fde8d8;color:#c05010;}
+
+/* curriculum tabs */
+.curr-tabs{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+.ctab{padding:8px 18px;border-radius:50px;font-size:12.5px;font-weight:600;cursor:pointer;border:1.5px solid var(--muted);color:var(--gray);background:#fff;transition:.2s;}
+.ctab.active,.ctab:hover{border-color:var(--blue);background:var(--blue);color:#fff;}
+.curr-content{display:none;}
+.curr-content.show{display:block;}
+.curr-item{display:flex;gap:12px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--sky);}
+.curr-item:last-child{border-bottom:none;}
+.ci-num{font-family:'Space Mono',monospace;font-size:11px;color:var(--blue);font-weight:700;min-width:30px;margin-top:2px;}
+.ci-text{font-size:13.5px;color:var(--ink2);line-height:1.5;}
+.ci-tag{font-size:10px;font-weight:700;background:var(--sky);color:var(--blue);padding:2px 9px;border-radius:50px;margin-left:8px;white-space:nowrap;}
+
+/* ─ FACILITIES ─ */
+.fac-sec{background:#fff;}
+.fac-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.fac-card{
+  border-radius:var(--r);padding:28px 22px;
+  border:1px solid rgba(21,87,160,.08);background:#fff;
+  box-shadow:var(--sh);
+  transition:transform .22s,box-shadow .22s,border-color .22s;
+  position:relative;overflow:hidden;
+}
+.fac-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  transform:scaleX(0);transform-origin:left;transition:transform .35s ease;
+}
+.fac-card:hover::before{transform:scaleX(1);}
+.fac-card:hover{transform:translateY(-5px);box-shadow:var(--shm);border-color:rgba(21,87,160,.18);}
+.fc-blue::before{background:linear-gradient(90deg,var(--blue),var(--blue3));}
+.fc-green::before{background:linear-gradient(90deg,var(--green),#2ed87a);}
+.fc-gold::before{background:linear-gradient(90deg,var(--gold),var(--gold2));}
+.fc-red::before{background:linear-gradient(90deg,var(--red),#f07070);}
+.fc-violet::before{background:linear-gradient(90deg,var(--violet),#9b7ff0);}
+.fc-teal::before{background:linear-gradient(90deg,#0898a0,#40c8d0);}
+.fac-icon-wrap{
+  width:52px;height:52px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;font-size:24px;
+  margin-bottom:16px;
+}
+.fiw-blue{background:#dbeeff;} .fiw-green{background:#d4f5e7;} .fiw-gold{background:#fff3d4;} .fiw-red{background:#fde8e8;} .fiw-violet{background:#ece8ff;} .fiw-teal{background:#d4f5f7;}
+.fac-name{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:7px;}
+.fac-desc{font-size:12.5px;color:var(--gray);line-height:1.7;margin-bottom:16px;}
+.fac-detail{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--blue);font-weight:600;}
+.fac-detail::before{content:'';width:16px;height:1.5px;background:var(--blue);}
+
+/* ─ NOTICES ─ */
+.notices-sec{background:var(--sky2);}
+.notices-layout{display:grid;grid-template-columns:1.5fr 1fr;gap:28px;align-items:start;}
+.notice-list{display:flex;flex-direction:column;gap:12px;}
+.notice-card{
+  background:#fff;border:1px solid rgba(21,87,160,.09);border-radius:var(--r);
+  padding:18px 20px;display:flex;gap:16px;align-items:flex-start;
+  box-shadow:var(--sh);transition:transform .2s,box-shadow .2s,border-left-color .2s;
+  border-left:3px solid transparent;cursor:default;
+}
+.notice-card:hover{transform:translateX(4px);box-shadow:var(--shm);}
+.nc-event:hover{border-left-color:var(--blue2);}
+.nc-exam:hover{border-left-color:var(--gold);}
+.nc-holiday:hover{border-left-color:var(--green);}
+.nc-sports:hover{border-left-color:var(--red);}
+.nc-general:hover{border-left-color:var(--violet);}
+.nd-box{min-width:50px;background:var(--sky);border-radius:10px;padding:9px 7px;text-align:center;}
+.nd-d{font-family:'DM Serif Display',serif;font-size:22px;color:var(--blue);line-height:1;}
+.nd-m{font-size:9.5px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;margin-top:2px;}
+.nb{flex:1;}
+.ntag{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:2px 10px;border-radius:50px;margin-bottom:5px;}
+.nt-event{background:#dbeeff;color:var(--blue);}
+.nt-exam{background:#fff3d4;color:#b07300;}
+.nt-holiday{background:#d4f5e7;color:var(--green);}
+.nt-sports{background:#fde8e8;color:var(--red);}
+.nt-general{background:#ece8ff;color:var(--violet);}
+.n-title{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:3px;line-height:1.35;}
+.n-desc{font-size:12px;color:var(--gray);line-height:1.6;}
+
+/* sidebar */
+.notices-aside{display:flex;flex-direction:column;gap:18px;}
+.aside-card{border-radius:var(--r);overflow:hidden;}
+.timing-card{background:linear-gradient(140deg,var(--blue),var(--blue2));padding:26px;}
+.tc-head{font-family:'DM Serif Display',serif;font-size:18px;color:#fff;margin-bottom:18px;display:flex;align-items:center;gap:8px;}
+.tc-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.12);}
+.tc-row:last-child{border-bottom:none;}
+.tc-l{font-size:12.5px;color:rgba(255,255,255,.78);}
+.tc-r{font-size:12.5px;font-weight:700;color:#fff;background:rgba(255,255,255,.14);padding:3px 11px;border-radius:50px;}
+.links-card{background:#fff;border:1px solid rgba(21,87,160,.09);border-radius:var(--r);padding:22px;box-shadow:var(--sh);}
+.lc-head{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:14px;}
+.lc-link{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-radius:8px;font-size:12.5px;font-weight:500;color:var(--ink2);background:var(--sky2);margin-bottom:7px;transition:background .18s,color .18s,transform .18s;}
+.lc-link:last-child{margin-bottom:0;}
+.lc-link:hover{background:var(--blue);color:#fff;transform:translateX(3px);}
+.lc-link span{font-size:14px;}
+
+/* ─ CONTACT ─ */
+.contact-sec{background:#fff;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;}
+.cinfo-card,.cform-card{background:#fff;border:1px solid rgba(21,87,160,.09);border-radius:var(--r);padding:34px;box-shadow:var(--sh);}
+.ccard-h{font-family:'DM Serif Display',serif;font-size:22px;color:var(--ink);margin-bottom:5px;}
+.ccard-sub{font-size:13px;color:var(--gray);margin-bottom:26px;}
+.cinfo-row{display:flex;gap:14px;align-items:flex-start;margin-bottom:20px;}
+.cinfo-row:last-of-type{margin-bottom:0;}
+.cir-icon{width:44px;height:44px;background:var(--sky);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.cir-l{font-size:10.5px;font-weight:600;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px;}
+.cir-v{font-size:13.5px;font-weight:600;color:var(--ink);line-height:1.5;}
+.map-box{
+  border-radius:12px;overflow:hidden;height:200px;margin-top:22px;
+  background:linear-gradient(135deg,#d4e8ff,#b8d4ff);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  border:1px solid rgba(21,87,160,.12);position:relative;
+}
+.map-box::before{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(21,87,160,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(21,87,160,.06) 1px,transparent 1px);
+  background-size:28px 28px;
+}
+.map-pin{font-size:34px;position:relative;z-index:1;animation:pinb 2s ease infinite;}
+@keyframes pinb{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.map-lbl{font-size:13px;font-weight:700;color:var(--blue);position:relative;z-index:1;}
+.map-sub{font-size:11px;color:var(--gray);position:relative;z-index:1;}
+
+/* form */
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+.fg{display:flex;flex-direction:column;gap:5px;margin-bottom:12px;}
+.fg label{font-size:11.5px;font-weight:600;color:var(--ink2);}
+.fg input,.fg select,.fg textarea{
+  padding:10px 14px;border-radius:8px;border:1.5px solid var(--muted);
+  font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);
+  outline:none;transition:border .18s,box-shadow .18s;background:#fafcff;resize:none;
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(21,87,160,.10);}
+.fsend{
+  width:100%;background:linear-gradient(135deg,var(--blue),var(--blue2));
+  color:#fff;border:none;cursor:pointer;padding:13px;border-radius:50px;
+  font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;
+  box-shadow:0 6px 20px rgba(21,87,160,.28);transition:transform .2s,box-shadow .2s;margin-top:4px;
+}
+.fsend:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(21,87,160,.38);}
+
+/* ─ FOOTER ─ */
+.footer{background:var(--ink);color:rgba(255,255,255,.75);padding:58px 44px 28px;}
+.footer-in{max-width:1220px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:40px;padding-bottom:46px;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:26px;}
+.ft-brand .fl{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.fl-dot{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue2));display:flex;align-items:center;justify-content:center;font-size:18px;}
+.fl strong{font-size:14px;font-weight:700;color:#fff;}
+.ft-brand p{font-size:12.5px;line-height:1.8;max-width:240px;}
+.ft-col h4{font-size:10.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#fff;margin-bottom:14px;}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.ft-col ul li a{font-size:12.5px;color:rgba(255,255,255,.55);transition:color .18s;}
+.ft-col ul li a:hover{color:var(--blue3);}
+.ft-ci{display:flex;gap:9px;align-items:flex-start;margin-bottom:11px;font-size:12px;color:rgba(255,255,255,.55);line-height:1.5;}
+.ft-ci span:first-child{font-size:15px;flex-shrink:0;margin-top:1px;}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-bottom p{font-size:11.5px;color:rgba(255,255,255,.35);}
+.fb-links{display:flex;gap:18px;}
+.fb-links a{font-size:11.5px;color:rgba(255,255,255,.35);transition:color .18s;}
+.fb-links a:hover{color:var(--blue3);}
+
+/* toast */
+.toast{position:fixed;bottom:28px;right:28px;z-index:2000;background:var(--green);color:#fff;padding:13px 20px;border-radius:12px;font-size:13.5px;font-weight:600;box-shadow:0 8px 28px rgba(15,158,104,.38);transform:translateY(70px);opacity:0;transition:transform .38s,opacity .38s;display:flex;align-items:center;gap:9px;}
+.toast.show{transform:translateY(0);opacity:1;}
+
+@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+/* ─ RESPONSIVE ─ */
+@media(max-width:1024px){
+  .hero-content{grid-template-columns:1fr;}
+  .hero-card{display:none;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);}
+  .stat-cell:nth-child(2){border-right:none;}
+  .about-grid{grid-template-columns:1fr;}
+  .about-img{display:none;}
+  .streams-grid{grid-template-columns:1fr 1fr;}
+  .books-layout{grid-template-columns:1fr;}
+  .fac-grid{grid-template-columns:1fr 1fr;}
+  .notices-layout{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  .nav{padding:0 18px;}
+  .nav-ul{display:none;}
+  .burger{display:flex;}
+  .hero-content{padding:0 22px;}
+  .sec{padding:64px 22px;}
+  .stats-inner{padding:0 22px;grid-template-columns:1fr 1fr;}
+  .stat-cell{padding:20px 16px;}
+  .streams-grid{grid-template-columns:1fr;}
+  .fac-grid{grid-template-columns:1fr 1fr;}
+  .frow{grid-template-columns:1fr;}
+  .footer{padding:48px 22px 22px;}
+  .footer-top{grid-template-columns:1fr;gap:28px;}
+  .footer-bottom{flex-direction:column;text-align:center;}
+}
+@media(max-width:480px){
+  .fac-grid{grid-template-columns:1fr;}
+  .hero-actions{flex-direction:column;}
+  .btn-w,.btn-ghost{text-align:center;}
+  .hero-chips{gap:7px;}
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-pill">📢 Latest</div>
+  <div class="ticker-track">
+    <span class="ticker-run">
+      &nbsp;&nbsp;Annual Exam Schedule Released — Check Notice Board &nbsp;|&nbsp; Republic Day Celebration — 26th January 2025 &nbsp;|&nbsp; Science Exhibition — 15th February &nbsp;|&nbsp; Admissions Open for 2025-26 — Collect Forms at Office &nbsp;|&nbsp; PTM scheduled — 3rd February 2025 &nbsp;|&nbsp; Annual Sports Day — 22nd February 2025 &nbsp;|&nbsp; New Library Books Added — Visit School Library &nbsp;|&nbsp;
+      &nbsp;&nbsp;Annual Exam Schedule Released — Check Notice Board &nbsp;|&nbsp; Republic Day Celebration — 26th January 2025 &nbsp;|&nbsp; Science Exhibition — 15th February &nbsp;|&nbsp; Admissions Open for 2025-26 — Collect Forms at Office &nbsp;|&nbsp; PTM scheduled — 3rd February 2025 &nbsp;|&nbsp; Annual Sports Day — 22nd February 2025 &nbsp;|&nbsp; New Library Books Added — Visit School Library &nbsp;|&nbsp;
+    </span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a class="brand" href="#">
+    <div class="brand-badge">🏫</div>
+    <div class="brand-words">
+      <strong>Govt. HSS Vehil</strong>
+      <span>Higher Secondary School</span>
+    </div>
+  </a>
+  <ul class="nav-ul">
+    <li><a href="#home" class="on">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#streams">Streams</a></li>
+    <li><a href="#books">Books</a></li>
+    <li><a href="#facilities">Facilities</a></li>
+    <li><a href="#notices">Notices</a></li>
+    <li><a href="#contact" class="nav-cta-btn">Contact</a></li>
+  </ul>
+  <button class="burger" id="burger">
+    <b></b><b></b><b></b>
+  </button>
+</nav>
+<div class="mob-nav" id="mobnav">
+  <a href="#home" onclick="cn()">🏠 Home</a>
+  <a href="#about" onclick="cn()">🏫 About</a>
+  <a href="#streams" onclick="cn()">📚 Streams</a>
+  <a href="#books" onclick="cn()">📖 Books</a>
+  <a href="#facilities" onclick="cn()">🏗️ Facilities</a>
+  <a href="#notices" onclick="cn()">📋 Notices</a>
+  <a href="#contact" onclick="cn()">📞 Contact</a>
+</div>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="hero" id="home">
+  <!-- Spacer for ticker + nav -->
+  <div class="hero-spacer"></div>
+
+  <!-- BACKGROUND: Replace the gradient in .hero-bg-img with your school image.
+       In the CSS :root, find .hero-bg-img and change the background property to:
+       background: url('your-photo.jpg') center/cover no-repeat;
+       The overlay above it will keep it at low visibility automatically. -->
+  <div class="hero-bg-img"></div>
+  <div class="hero-bg-overlay"></div>
+  <div class="hero-bg-noise"></div>
+
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-dot"></span>
+        Govt. Higher Secondary School
+      </div>
+      <h1 class="hero-h1">
+        Excellence in<br>Education at<br><em>Vehil</em>
+      </h1>
+      <p class="hero-sub">Shaping confident, capable young minds since decades. Science, Commerce & Humanities streams for Classes 8 through Plus Two.</p>
+      <div class="hero-actions">
+        <a href="#about" class="btn-w">Explore School →</a>
+        <a href="#notices" class="btn-ghost">Latest Notices</a>
+      </div>
+      <div class="hero-chips">
+        <span class="hchip"><span class="hchip-dot" style="background:#4ade80"></span>500+ Students</span>
+        <span class="hchip"><span class="hchip-dot" style="background:#60a5fa"></span>30+ Teachers</span>
+        <span class="hchip"><span class="hchip-dot" style="background:var(--gold2)"></span>3 Streams</span>
+        <span class="hchip"><span class="hchip-dot" style="background:#f472b6"></span>Kerala State Board</span>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hcard-head">
+        <div class="hcard-icon">🏫</div>
+        <div>
+          <div class="hcard-title">Govt. HSS Vehil</div>
+          <div class="hcard-sub">School at a Glance</div>
+        </div>
+      </div>
+      <div class="hcard-row">
+        <span class="hcard-label">Affiliation</span>
+        <span class="hcard-val">Kerala State Board</span>
+      </div>
+      <div class="hcard-row">
+        <span class="hcard-label">Classes</span>
+        <span class="hcard-pill">8 → Plus Two</span>
+      </div>
+      <div class="hcard-row">
+        <span class="hcard-label">Streams</span>
+        <span class="hcard-val">Science · Commerce</span>
+      </div>
+      <div class="hcard-row">
+        <span class="hcard-label">School Hours</span>
+        <span class="hcard-pill">9 AM – 4:15 PM</span>
+      </div>
+      <div class="hcard-row">
+        <span class="hcard-label">Working Days</span>
+        <span class="hcard-val">Mon – Saturday</span>
+      </div>
+      <div class="hcard-row">
+        <span class="hcard-label">Medium</span>
+        <span class="hcard-val">Malayalam / English</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-mouse"></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-cell reveal">
+      <div class="stat-icon si-blue">👨‍🎓</div>
+      <div><div class="stat-num">500+</div><div class="stat-lbl">Enrolled Students</div></div>
+    </div>
+    <div class="stat-cell reveal">
+      <div class="stat-icon si-green">👩‍🏫</div>
+      <div><div class="stat-num">30+</div><div class="stat-lbl">Qualified Teachers</div></div>
+    </div>
+    <div class="stat-cell reveal">
+      <div class="stat-icon si-gold">🏆</div>
+      <div><div class="stat-num">100%</div><div class="stat-lbl">Board Pass Rate</div></div>
+    </div>
+    <div class="stat-cell reveal">
+      <div class="stat-icon si-violet">📚</div>
+      <div><div class="stat-num">3</div><div class="stat-lbl">Academic Streams</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════ ABOUT ═══════════════════════ -->
+<section class="sec about-sec" id="about">
+  <div class="sec-inner">
+    <div class="about-grid">
+      <div class="about-img reveal">
+        <div class="about-img-box">
+          <div class="about-big-icon">🏫</div>
+        </div>
+        <div class="about-corner-card acc-1">
+          <div class="acc-icon">🎓</div>
+          <div class="acc-t"><strong>Higher Secondary</strong><span>Plus One & Plus Two</span></div>
+        </div>
+        <div class="about-corner-card acc-2">
+          <div class="acc-icon">🌟</div>
+          <div class="acc-t"><strong>Govt. Aided</strong><span>Kerala State Board</span></div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="sec-tag">About the School</div>
+        <h2 class="sec-h">Where Every Child<br><em>Flourishes</em></h2>
+        <p class="sec-p" style="margin-bottom:0">Govt. Higher Secondary School Vehil has been a pillar of quality, affordable education for the Vehil community. From Class 8 through Plus Two, our school delivers a strong foundation in academics, sports, arts, and character.</p>
+        <div class="about-feats">
+          <div class="feat-row">Experienced, dedicated teaching faculty across all subjects</div>
+          <div class="feat-row">Science and Commerce streams with specialized labs</div>
+          <div class="feat-row">Well-stocked library with 5000+ books and periodicals</div>
+          <div class="feat-row">Active NCC, NSS, Nature Club, and cultural groups</div>
+          <div class="feat-row">Annual sports day, cultural fest, and science exhibition</div>
+          <div class="feat-row">Government scholarships and free education for all</div>
+        </div>
+        <div class="chips-row">
+          <span class="chip">📍 Vehil, Kerala</span>
+          <span class="chip">🏛️ Government School</span>
+          <span class="chip">📅 Classes 8 – +2</span>
+          <span class="chip">🇮🇳 State Board</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ STREAMS ═══════════════════════ -->
+<section class="sec streams-sec" id="streams">
+  <div class="sec-inner">
+    <div class="reveal" style="text-align:center;max-width:580px;margin:0 auto 46px;">
+      <div class="sec-tag" style="justify-content:center;">Academic Streams</div>
+      <h2 class="sec-h">Choose Your <em>Path</em></h2>
+      <p class="sec-p" style="margin:0 auto;text-align:center;">We offer two specialized Higher Secondary streams and a strong secondary foundation — all built to prepare students for board exams and beyond.</p>
+    </div>
+
+    <div class="streams-grid">
+
+      <!-- Science Stream -->
+      <div class="stream-card reveal">
+        <div class="stream-header sh-blue">
+          <div class="stream-icon">🔬</div>
+          <div class="stream-name">Science</div>
+          <div class="stream-tagline">For aspiring engineers, doctors & researchers</div>
+        </div>
+        <div class="stream-body">
+          <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);margin-bottom:12px;">Core Subjects</div>
+          <div class="stream-subjects">
+            <div class="subj-row"><span class="subj-dot dot-blue"></span>Physics</div>
+            <div class="subj-row"><span class="subj-dot dot-blue"></span>Chemistry</div>
+            <div class="subj-row"><span class="subj-dot dot-blue"></span>Mathematics / Biology</div>
+            <div class="subj-row"><span class="subj-dot dot-blue"></span>English (Compulsory)</div>
+            <div class="subj-row"><span class="subj-dot dot-blue"></span>Malayalam / Second Language</div>
+          </div>
+          <div class="stream-divider"></div>
+          <div class="stream-footer">
+            <div><div class="sf-label">Career Paths</div><div class="sf-val">Engineering · Medicine · Research</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Commerce Stream -->
+      <div class="stream-card reveal">
+        <div class="stream-header sh-green">
+          <div class="stream-icon">📊</div>
+          <div class="stream-name">Commerce</div>
+          <div class="stream-tagline">For future business leaders & finance experts</div>
+        </div>
+        <div class="stream-body">
+          <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);margin-bottom:12px;">Core Subjects</div>
+          <div class="stream-subjects">
+            <div class="subj-row"><span class="subj-dot dot-green"></span>Accountancy</div>
+            <div class="subj-row"><span class="subj-dot dot-green"></span>Business Studies</div>
+            <div class="subj-row"><span class="subj-dot dot-green"></span>Economics</div>
+            <div class="subj-row"><span class="subj-dot dot-green"></span>English (Compulsory)</div>
+            <div class="subj-row"><span class="subj-dot dot-green"></span>Malayalam / Computer Application</div>
+          </div>
+          <div class="stream-divider"></div>
+          <div class="stream-footer">
+            <div><div class="sf-label">Career Paths</div><div class="sf-val">CA · Finance · Management · Banking</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Secondary (Class 8–10) -->
+      <div class="stream-card reveal">
+        <div class="stream-header sh-violet">
+          <div class="stream-icon">📐</div>
+          <div class="stream-name">Secondary</div>
+          <div class="stream-tagline">Classes 8, 9 & 10 — strong all-round foundation</div>
+        </div>
+        <div class="stream-body">
+          <div style="font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gray);margin-bottom:12px;">Core Subjects</div>
+          <div class="stream-subjects">
+            <div class="subj-row"><span class="subj-dot dot-violet"></span>Mathematics</div>
+            <div class="subj-row"><span class="subj-dot dot-violet"></span>Science & Social Studies</div>
+            <div class="subj-row"><span class="subj-dot dot-violet"></span>English & Malayalam</div>
+            <div class="subj-row"><span class="subj-dot dot-violet"></span>Hindi (Second Language)</div>
+            <div class="subj-row"><span class="subj-dot dot-violet"></span>IT / Computer Literacy</div>
+          </div>
+          <div class="stream-divider"></div>
+          <div class="stream-footer">
+            <div><div class="sf-label">Leads To</div><div class="sf-val">SSLC Board Exam → Higher Secondary</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ BOOKS & CURRICULUM ═══════════════════════ -->
+<section class="sec books-sec" id="books">
+  <div class="sec-inner">
+    <div class="reveal" style="margin-bottom:46px;">
+      <div class="sec-tag">Books & Curriculum</div>
+      <h2 class="sec-h">Our <em>Textbooks</em> & Study Materials</h2>
+      <p class="sec-p" style="margin-bottom:0">All textbooks are prescribed by the Kerala State Curriculum Framework. The school library stocks every subject textbook, reference books, and periodicals.</p>
+    </div>
+
+    <div class="books-layout">
+      <!-- Bookshelf -->
+      <div class="reveal">
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-bottom:16px;">Prescribed Textbooks — Plus Two Science</div>
+        <div class="book-shelf">
+          <div class="book-row">
+            <div class="book-spine" style="background:linear-gradient(180deg,#1a6fc4,#0f4f96);"></div>
+            <div class="book-info">
+              <div class="book-title">Physics — Part I & II</div>
+              <div class="book-meta">SCERT Kerala · Class 12</div>
+            </div>
+            <span class="book-badge bb-core">Core</span>
+          </div>
+          <div class="book-row">
+            <div class="book-spine" style="background:linear-gradient(180deg,#0f9e68,#0a6e46);"></div>
+            <div class="book-info">
+              <div class="book-title">Chemistry — Part I & II</div>
+              <div class="book-meta">SCERT Kerala · Class 12</div>
+            </div>
+            <span class="book-badge bb-core">Core</span>
+          </div>
+          <div class="book-row">
+            <div class="book-spine" style="background:linear-gradient(180deg,#e8a020,#b06010);"></div>
+            <div class="book-info">
+              <div class="book-title">Mathematics — Textbook</div>
+              <div class="book-meta">SCERT Kerala · Class 12</div>
+            </div>
+            <span class="book-badge bb-sci">Science</span>
+          </div>
+          <div class="book-row">
+            <div class="book-spine" style="background:linear-gradient(180deg,#6b4fd4,#432fa8);"></div>
+            <div class="book-info">
+              <div class="book-title">Biology — Botany & Zoology</div>
+              <div class="book-meta">SCERT Kerala · Class 12 (Optional)</div>
+            </div>
+            <span class="book-badge bb-opt">Optional</span>
+          </div>
+          <div class="book-row">
+            <div class="book-spine" style="background:linear-gradient(180deg,#d94040,#901010);"></div>
+            <div class="book-info">
+              <div class="book-title">Communicative English</div>
+              <div class="book-meta">SCERT Kerala · Plus Two</div>
+            </div>
+            <span class="book-badge bb-lang">Language</span>
+          </div>
+          <div class="book-row">
+            <div class="book-spine" style="background:linear-gradient(180deg,#0898a0,#065860);"></div>
+            <div class="book-info">
+              <div class="book-title">Malayalam — Thulika</div>
+              <div class="book-meta">SCERT Kerala · Plus Two</div>
+            </div>
+            <span class="book-badge bb-lang">Language</span>
+          </div>
+          <div class="book-row">
+            <div class="book-spine" style="background:linear-gradient(180deg,#c05010,#803008);"></div>
+            <div class="book-info">
+              <div class="book-title">Computer Science / IT</div>
+              <div class="book-meta">SCERT Kerala · Plus Two</div>
+            </div>
+            <span class="book-badge bb-voc">Vocational</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Curriculum Tabs -->
+      <div class="reveal">
+        <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-bottom:16px;">Curriculum by Class</div>
+        <div class="curr-tabs">
+          <div class="ctab active" onclick="switchTab('c10',this)">Class 10</div>
+          <div class="ctab" onclick="switchTab('c11',this)">Plus One</div>
+          <div class="ctab" onclick="switchTab('c12',this)">Plus Two</div>
+        </div>
+
+        <div class="curr-content show" id="c10">
+          <div class="curr-item"><span class="ci-num">01</span><span class="ci-text">Mathematics <span class="ci-tag">SSLC</span></span></div>
+          <div class="curr-item"><span class="ci-num">02</span><span class="ci-text">Science (Physics, Chemistry, Biology) <span class="ci-tag">SSLC</span></span></div>
+          <div class="curr-item"><span class="ci-num">03</span><span class="ci-text">Social Science (History, Geography, Civics) <span class="ci-tag">SSLC</span></span></div>
+          <div class="curr-item"><span class="ci-num">04</span><span class="ci-text">English — Communicative <span class="ci-tag">Language</span></span></div>
+          <div class="curr-item"><span class="ci-num">05</span><span class="ci-text">Malayalam — First Language <span class="ci-tag">Language</span></span></div>
+          <div class="curr-item"><span class="ci-num">06</span><span class="ci-text">Hindi / Arabic — Second Language <span class="ci-tag">Language</span></span></div>
+          <div class="curr-item"><span class="ci-num">07</span><span class="ci-text">IT Practical & Theory <span class="ci-tag">Optional</span></span></div>
+        </div>
+
+        <div class="curr-content" id="c11">
+          <div class="curr-item"><span class="ci-num">01</span><span class="ci-text">Physics — Mechanics & Thermodynamics <span class="ci-tag">Science</span></span></div>
+          <div class="curr-item"><span class="ci-num">02</span><span class="ci-text">Chemistry — Organic & Inorganic <span class="ci-tag">Science</span></span></div>
+          <div class="curr-item"><span class="ci-num">03</span><span class="ci-text">Mathematics — Calculus & Algebra <span class="ci-tag">Science</span></span></div>
+          <div class="curr-item"><span class="ci-num">04</span><span class="ci-text">Accountancy — Financial Accounting <span class="ci-tag">Commerce</span></span></div>
+          <div class="curr-item"><span class="ci-num">05</span><span class="ci-text">Business Studies <span class="ci-tag">Commerce</span></span></div>
+          <div class="curr-item"><span class="ci-num">06</span><span class="ci-text">English — Plus One <span class="ci-tag">Language</span></span></div>
+          <div class="curr-item"><span class="ci-num">07</span><span class="ci-text">Malayalam — Plus One <span class="ci-tag">Language</span></span></div>
+        </div>
+
+        <div class="curr-content" id="c12">
+          <div class="curr-item"><span class="ci-num">01</span><span class="ci-text">Physics — Electromagnetism & Optics <span class="ci-tag">Science</span></span></div>
+          <div class="curr-item"><span class="ci-num">02</span><span class="ci-text">Chemistry — Electrochemistry & Polymers <span class="ci-tag">Science</span></span></div>
+          <div class="curr-item"><span class="ci-num">03</span><span class="ci-text">Mathematics — Integration & Probability <span class="ci-tag">Science</span></span></div>
+          <div class="curr-item"><span class="ci-num">04</span><span class="ci-text">Accountancy — Corporate Accounts <span class="ci-tag">Commerce</span></span></div>
+          <div class="curr-item"><span class="ci-num">05</span><span class="ci-text">Economics — Macro & Indian Economy <span class="ci-tag">Commerce</span></span></div>
+          <div class="curr-item"><span class="ci-num">06</span><span class="ci-text">English — Plus Two <span class="ci-tag">Language</span></span></div>
+          <div class="curr-item"><span class="ci-num">07</span><span class="ci-text">Computer Science / IT Application <span class="ci-tag">Optional</span></span></div>
+        </div>
+
+        <div style="margin-top:28px;padding:18px;background:var(--sky);border-radius:12px;border:1px solid rgba(21,87,160,.12);">
+          <div style="font-size:12px;font-weight:700;color:var(--blue);margin-bottom:6px;">📚 School Library</div>
+          <div style="font-size:12.5px;color:var(--ink2);line-height:1.7;">Our library holds <strong>5,000+ books</strong> including all prescribed textbooks, reference guides, encyclopedias, Malayalam literature, science journals, and newspapers. Open to all students and staff during school hours.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FACILITIES ═══════════════════════ -->
+<section class="sec fac-sec" id="facilities">
+  <div class="sec-inner">
+    <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto 46px;">
+      <div class="sec-tag" style="justify-content:center;">Campus & Facilities</div>
+      <h2 class="sec-h">Everything a Student <em>Needs</em></h2>
+      <p class="sec-p" style="margin:0 auto;text-align:center;">Our campus is equipped to support academic, creative, and physical development of every student.</p>
+    </div>
+
+    <div class="fac-grid">
+      <div class="fac-card fc-blue reveal">
+        <div class="fac-icon-wrap fiw-blue">💻</div>
+        <div class="fac-name">Computer Lab</div>
+        <div class="fac-desc">Fully equipped computer lab with 30+ desktops, broadband internet, and licensed software for IT practicals and digital literacy classes.</div>
+        <div class="fac-detail">30+ computers · Broadband Internet</div>
+      </div>
+      <div class="fac-card fc-green reveal">
+        <div class="fac-icon-wrap fiw-green">🔬</div>
+        <div class="fac-name">Science Laboratories</div>
+        <div class="fac-desc">Separate Physics, Chemistry, and Biology labs with modern equipment for hands-on experiments and practicals as per the SCERT curriculum.</div>
+        <div class="fac-detail">3 Labs · SCERT Approved</div>
+      </div>
+      <div class="fac-card fc-gold reveal">
+        <div class="fac-icon-wrap fiw-gold">📚</div>
+        <div class="fac-name">School Library</div>
+        <div class="fac-desc">5,000+ books including textbooks, references, encyclopedias, Malayalam literature, competitive exam guides, and daily newspapers.</div>
+        <div class="fac-detail">5000+ Books · Reading Room</div>
+      </div>
+      <div class="fac-card fc-red reveal">
+        <div class="fac-icon-wrap fiw-red">⚽</div>
+        <div class="fac-name">Sports Ground</div>
+        <div class="fac-desc">Large playground with facilities for football, volleyball, kabaddi, athletics, and other outdoor sports. Annual sports day held every year.</div>
+        <div class="fac-detail">Football · Volleyball · Athletics</div>
+      </div>
+      <div class="fac-card fc-violet reveal">
+        <div class="fac-icon-wrap fiw-violet">🎭</div>
+        <div class="fac-name">Auditorium & Stage</div>
+        <div class="fac-desc">Dedicated hall for cultural programs, annual day, Republic Day, Independence Day, seminars, and student performances with proper stage setup.</div>
+        <div class="fac-detail">Cultural Programs · Assemblies</div>
+      </div>
+      <div class="fac-card fc-teal reveal">
+        <div class="fac-icon-wrap fiw-teal">🍽️</div>
+        <div class="fac-name">Mid-Day Meal Kitchen</div>
+        <div class="fac-desc">Government-run nutritious mid-day meal program for all students. Hygienic kitchen and dining space ensuring no student studies on an empty stomach.</div>
+        <div class="fac-detail">Daily Nutritious Meals · Free</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ NOTICES ═══════════════════════ -->
+<section class="sec notices-sec" id="notices">
+  <div class="sec-inner">
+    <div class="reveal" style="margin-bottom:42px;">
+      <div class="sec-tag">Notice Board</div>
+      <h2 class="sec-h">Latest <em>Notices</em></h2>
+      <p class="sec-p" style="margin-bottom:0">Important announcements, events, and updates from school management.</p>
+    </div>
+
+    <div class="notices-layout">
+      <div class="notice-list reveal">
+
+        <div class="notice-card nc-event">
+          <div class="nd-box"><div class="nd-d">26</div><div class="nd-m">Jan</div></div>
+          <div class="nb"><span class="ntag nt-event">🎉 Event</span><div class="n-title">Republic Day Celebration 2025</div><div class="n-desc">Flag hoisting at 8:00 AM. All students and staff in uniform. Cultural performances will follow the ceremony.</div></div>
+        </div>
+
+        <div class="notice-card nc-general">
+          <div class="nd-box"><div class="nd-d">03</div><div class="nd-m">Feb</div></div>
+          <div class="nb"><span class="ntag nt-general">📋 General</span><div class="n-title">Parent-Teacher Meeting (PTM)</div><div class="n-desc">PTM for Classes 10, 11 & 12 — 3rd February, 10:00 AM to 1:00 PM. Attendance of parents is compulsory.</div></div>
+        </div>
+
+        <div class="notice-card nc-exam">
+          <div class="nd-box"><div class="nd-d">15</div><div class="nd-m">Feb</div></div>
+          <div class="nb"><span class="ntag nt-exam">✏️ Exam</span><div class="n-title">Half-Yearly Examination Timetable</div><div class="n-desc">Half-yearly exams begin 15th February. Collect hall tickets from class teachers. Timetable on notice board.</div></div>
+        </div>
+
+        <div class="notice-card nc-sports">
+          <div class="nd-box"><div class="nd-d">22</div><div class="nd-m">Feb</div></div>
+          <div class="nb"><span class="ntag nt-sports">🏆 Sports</span><div class="n-title">Annual Sports Day 2025</div><div class="n-desc">Sports Day on 22nd February. Students must register with PT teacher before 10th Feb to participate.</div></div>
+        </div>
+
+        <div class="notice-card nc-holiday">
+          <div class="nd-box"><div class="nd-d">01</div><div class="nd-m">Mar</div></div>
+          <div class="nb"><span class="ntag nt-holiday">🌿 Holiday</span><div class="n-title">School Closed — Maha Shivratri</div><div class="n-desc">School remains closed on 1st March. Classes resume normally from 2nd March.</div></div>
+        </div>
+
+        <div class="notice-card nc-general">
+          <div class="nd-box"><div class="nd-d">10</div><div class="nd-m">Mar</div></div>
+          <div class="nb"><span class="ntag nt-general">📝 Admission</span><div class="n-title">New Admissions Open — 2025-26</div><div class="n-desc">Applications for Class 8 and Plus One open. Collect forms from school office, 9 AM – 2 PM on working days.</div></div>
+        </div>
+
+      </div>
+
+      <div class="notices-aside reveal">
+        <div class="timing-card aside-card">
+          <div class="tc-head">⏰ School Timings</div>
+          <div class="tc-row"><span class="tc-l">School Opens</span><span class="tc-r">9:00 AM</span></div>
+          <div class="tc-row"><span class="tc-l">Assembly</span><span class="tc-r">9:00–9:15</span></div>
+          <div class="tc-row"><span class="tc-l">Lunch Break</span><span class="tc-r">12:30–1:00</span></div>
+          <div class="tc-row"><span class="tc-l">School Closes</span><span class="tc-r">4:15 PM</span></div>
+          <div class="tc-row"><span class="tc-l">Working Days</span><span class="tc-r">Mon – Sat</span></div>
+        </div>
+        <div class="links-card aside-card">
+          <div class="lc-head">🔗 Quick Links</div>
+          <a href="#" class="lc-link">📥 Download Timetable <span>→</span></a>
+          <a href="#" class="lc-link">📝 Exam Results <span>→</span></a>
+          <a href="#" class="lc-link">📋 Admission Form <span>→</span></a>
+          <a href="#" class="lc-link">📚 Study Materials <span>→</span></a>
+          <a href="#contact" class="lc-link">📞 Contact School <span>→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ CONTACT ═══════════════════════ -->
+<section class="sec contact-sec" id="contact">
+  <div class="sec-inner">
+    <div class="reveal" style="text-align:center;max-width:520px;margin:0 auto 46px;">
+      <div class="sec-tag" style="justify-content:center;">Contact Us</div>
+      <h2 class="sec-h">Get in <em>Touch</em></h2>
+      <p class="sec-p" style="margin:0 auto;text-align:center;">Questions, admissions, or just want to know more? We're here to help.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="cinfo-card" style="margin-bottom:20px;">
+          <div class="ccard-h">School Information</div>
+          <div class="ccard-sub">Reach us during working hours</div>
+          <div class="cinfo-row">
+            <div class="cir-icon">📍</div>
+            <div><div class="cir-l">Address</div><div class="cir-v">Govt. Higher Secondary School<br>Vehil, Kerala, India</div></div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cir-icon">📞</div>
+            <div><div class="cir-l">Phone</div><div class="cir-v">+91 XXXXX XXXXX</div></div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cir-icon">✉️</div>
+            <div><div class="cir-l">Email</div><div class="cir-v">hssvehil@gmail.com</div></div>
+          </div>
+          <div class="cinfo-row">
+            <div class="cir-icon">🕐</div>
+            <div><div class="cir-l">Office Hours</div><div class="cir-v">Mon – Sat · 9:00 AM – 4:00 PM</div></div>
+          </div>
+        </div>
+        <div class="map-box">
+          <div class="map-pin">📍</div>
+          <div class="map-lbl">Govt. HSS Vehil</div>
+          <div class="map-sub">Vehil, Kerala</div>
+        </div>
+      </div>
+
+      <div class="cform-card reveal">
+        <div class="ccard-h">Send a Message</div>
+        <div class="ccard-sub">We'll reply within 24 hours</div>
+        <div class="frow">
+          <div class="fg"><label>First Name</label><input id="fn" type="text" placeholder="Your name"></div>
+          <div class="fg"><label>Last Name</label><input id="ln" type="text" placeholder="Last name"></div>
+        </div>
+        <div class="fg"><label>Phone Number</label><input id="ph" type="tel" placeholder="+91 XXXXX XXXXX"></div>
+        <div class="fg">
+          <label>I am a...</label>
+          <select id="ro">
+            <option value="">Select...</option>
+            <option>Parent</option><option>Student</option>
+            <option>Alumnus</option><option>Staff / Teacher</option><option>Other</option>
+          </select>
+        </div>
+        <div class="fg"><label>Message</label><textarea id="msg" rows="4" placeholder="Write your query here..."></textarea></div>
+        <button class="fsend" onclick="sendMsg()">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+<footer class="footer">
+  <div class="footer-in">
+    <div class="footer-top">
+      <div class="ft-brand">
+        <div class="fl">
+          <div class="fl-dot">🏫</div>
+          <strong>Govt. HSS Vehil</strong>
+        </div>
+        <p>Govt. Higher Secondary School, Vehil — committed to quality education, holistic development, and community service since decades.</p>
+      </div>
+      <div class="ft-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About School</a></li>
+          <li><a href="#streams">Streams</a></li>
+          <li><a href="#books">Books</a></li>
+          <li><a href="#facilities">Facilities</a></li>
+          <li><a href="#notices">Notices</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Academics</h4>
+        <ul>
+          <li><a href="#streams">Science Stream</a></li>
+          <li><a href="#streams">Commerce Stream</a></li>
+          <li><a href="#streams">Class 8 – 10 (Secondary)</a></li>
+          <li><a href="#books">Textbooks & Curriculum</a></li>
+          <li><a href="#facilities">Computer Lab</a></li>
+          <li><a href="#facilities">Science Labs</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Contact</h4>
+        <div class="ft-ci"><span>📍</span><span>Vehil, Kerala, India</span></div>
+        <div class="ft-ci"><span>📞</span><span>+91 XXXXX XXXXX</span></div>
+        <div class="ft-ci"><span>✉️</span><span>hssvehil@gmail.com</span></div>
+        <div class="ft-ci"><span>🕐</span><span>Mon–Sat · 9 AM – 4 PM</span></div>
+        <div class="ft-ci"><span>🏛️</span><span>Government Aided School</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Govt. Higher Secondary School, Vehil. All rights reserved.</p>
+      <div class="fb-links">
+        <a href="#">Privacy</a>
+        <a href="#">RTI</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">✅ Message sent! We'll get back to you soon.</div>
+
+<script>
+/* NAV SCROLL */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('up',scrollY>30);
+  const ids=['home','about','streams','books','facilities','notices','contact'];
+  let cur='home';
+  ids.forEach(id=>{const el=document.getElementById(id);if(el&&scrollY>=el.offsetTop-90)cur=id;});
+  document.querySelectorAll('.nav-ul a').forEach(a=>{
+    a.classList.toggle('on',a.getAttribute('href')==='#'+cur);
+  });
+});
+
+/* BURGER */
+document.getElementById('burger').addEventListener('click',()=>document.getElementById('mobnav').classList.toggle('open'));
+function cn(){document.getElementById('mobnav').classList.remove('open');}
+
+/* SMOOTH SCROLL */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+
+/* REVEAL */
+const ro=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+/* CURRICULUM TABS */
+function switchTab(id,el){
+  document.querySelectorAll('.curr-content').forEach(c=>c.classList.remove('show'));
+  document.querySelectorAll('.ctab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('show');
+  el.classList.add('active');
+}
+
+/* FORM */
+function sendMsg(){
+  const fn=document.getElementById('fn').value.trim();
+  const msg=document.getElementById('msg').value.trim();
+  if(!fn||!msg){alert('Please fill your name and message.');return;}
+  const t=document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),4000);
+  ['fn','ln','ph','ro','msg'].forEach(id=>document.getElementById(id).value='');
+}
+
+/* ── HOW TO ADD YOUR SCHOOL IMAGE ──
+   1. Open this HTML file in a text editor.
+   2. Find the CSS rule for `.hero-bg-img` (around line 95).
+   3. Change the `background:` value to:
+        background: url('YOUR_PHOTO_FILENAME.jpg') center / cover no-repeat;
+      e.g.:  background: url('school-front.jpg') center / cover no-repeat;
+   4. Place your photo in the same folder as this HTML file.
+   5. The dark overlay automatically keeps the image at low visibility so text remains readable.
+   6. To make the image darker/lighter, find `.hero-bg-overlay` and adjust the rgba opacity values.
+*/
+</script>
+</body>
+</html>
