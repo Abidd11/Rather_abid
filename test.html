@@ -403,7 +403,37 @@ a{text-decoration:none;color:inherit;}
   .hchip{font-size:10.5px;padding:4px 10px;}
   .hic{border-radius:16px;}
   .str-grid{grid-template-columns:1fr;}
-}
+}/* ── LIVE DESK CARD ── */
+.live-desk-card{background:rgba(15,32,67,.55);border:1px solid rgba(255,255,255,.14);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;padding:20px;color:#fff;font-family:'Nunito',sans-serif;box-shadow:0 10px 36px rgba(0,0,0,.32);box-sizing:border-box;margin-top:2px;}
+.live-desk-header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:12px;margin-bottom:16px;}
+.live-desk-header h3{font-size:13px;font-weight:800;margin:0;letter-spacing:.3px;}
+.live-desk-header p{font-size:9.5px;color:#94a3b8;margin:2px 0 0;font-weight:600;}
+.ist-badge{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);color:#f59e0b;font-size:8.5px;font-weight:900;padding:3px 8px;border-radius:4px;letter-spacing:1px;white-space:nowrap;}
+.live-desk-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.live-desk-cell{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.05);border-radius:9px;padding:9px 11px;}
+.cell-label{display:block;font-size:8px;color:#94a3b8;font-weight:800;letter-spacing:1.5px;margin-bottom:4px;}
+.cell-value{font-size:15px;font-weight:900;font-family:'Courier New',monospace;letter-spacing:.5px;}
+.cell-value-date{font-size:10.5px;font-weight:800;line-height:1.4;display:block;}
+.live-status-block{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:9px;padding:10px 12px;display:flex;align-items:center;gap:11px;margin-bottom:16px;}
+.status-indicator{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.led-dot{width:10px;height:10px;border-radius:50%;display:inline-block;transition:background-color .4s,box-shadow .4s;}
+.green-pulse{background:#10b981;box-shadow:0 0 0 0 rgba(16,185,129,.5);animation:gp 1.8s ease infinite;}
+@keyframes gp{0%{box-shadow:0 0 0 0 rgba(16,185,129,.5)}70%{box-shadow:0 0 0 7px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}
+.red-pulse{background:#ef4444;box-shadow:0 0 0 0 rgba(239,68,68,.5);animation:rpl 2.5s ease infinite;}
+@keyframes rpl{0%{box-shadow:0 0 0 0 rgba(239,68,68,.5)}70%{box-shadow:0 0 0 6px rgba(239,68,68,0)}100%{box-shadow:0 0 0 0 rgba(239,68,68,0)}}
+.live-status-block h4{font-size:11.5px;font-weight:900;margin:0;text-transform:uppercase;letter-spacing:.5px;}
+.live-status-block .period-text{font-size:10px;color:#94a3b8;margin:2px 0 0;font-weight:600;}
+.live-status-block #current-period{color:#fff;font-weight:800;}
+.live-desk-specs{border-top:1px solid rgba(255,255,255,.09);padding-top:12px;font-size:10.5px;}
+.spec-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;}
+.spec-row:last-child{margin-bottom:0;}
+.spec-row span{color:#94a3b8;}
+.spec-row strong{color:#fff;}
+.link-tel a{color:#38bdf8;text-decoration:none;font-weight:800;}
+.link-tel a:hover{text-decoration:underline;}
+.verification-seal{display:flex;align-items:center;gap:6px;font-size:9px;color:#94a3b8;border-top:1px solid rgba(255,255,255,.06);padding-top:10px;margin-top:12px;}
+.check-icon{color:#14b8a6;flex-shrink:0;}
+
 </style>
 </head>
 <body>
@@ -554,6 +584,60 @@ a{text-decoration:none;color:inherit;}
           <div class="hic-row"><span class="hic-lbl">Working Days</span><span class="hic-badge">Mon – Sat</span></div>
           <div class="hic-row"><span class="hic-lbl">School Hours</span><span class="hic-val">9 AM – 4:15 PM</span></div>
         </div>
+
+        <!-- ── LIVE OPERATIONS DESK ── -->
+        <div class="live-desk-card">
+          <div class="live-desk-header">
+            <div>
+              <h3>Live Operations Desk</h3>
+              <p>Jammu &amp; Kashmir School Hours</p>
+            </div>
+            <div class="ist-badge">IST CLOCK</div>
+          </div>
+
+          <div class="live-desk-grid">
+            <div class="live-desk-cell">
+              <span class="cell-label">CURRENT TIME</span>
+              <span id="ops-clock" class="cell-value">--:--:-- --</span>
+            </div>
+            <div class="live-desk-cell">
+              <span class="cell-label">DATE</span>
+              <span id="ops-date" class="cell-value-date">Loading...</span>
+            </div>
+          </div>
+
+          <div class="live-status-block">
+            <div class="status-indicator">
+              <span id="state-led" class="led-dot red-pulse"></span>
+            </div>
+            <div>
+              <h4 id="state-text">School is Closed</h4>
+              <p class="period-text">Period: <span id="current-period">Office closed (Next Session: 9:00 AM)</span></p>
+            </div>
+          </div>
+
+          <div class="live-desk-specs">
+            <div class="spec-row">
+              <span>Regular Timing:</span>
+              <strong>9:00 AM – 3:30 PM</strong>
+            </div>
+            <div class="spec-row">
+              <span>School Code:</span>
+              <strong>1210 (Zone Vehil)</strong>
+            </div>
+            <div class="spec-row">
+              <span>Main Office Helpline:</span>
+              <strong class="link-tel"><a href="tel:+911933460605">+91 1933 460 605</a></strong>
+            </div>
+          </div>
+
+          <div class="verification-seal">
+            <svg class="check-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            <span>Verified School Profile (Affiliation #21045)</span>
+          </div>
+        </div>
+        <!-- ── END LIVE DESK ── -->
+
         <div class="hic-foot">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><polygon points="7,1 8.5,5.5 13.5,5.5 9.5,8.5 11,13 7,10.5 3,13 4.5,8.5 .5,5.5 5.5,5.5" fill="var(--navy)"/></svg>
           <div class="hic-ft">Excellence in Education Since Decades</div>
@@ -760,7 +844,7 @@ a{text-decoration:none;color:inherit;}
         <div class="fib"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="11" y="4" width="6" height="10" rx="2" fill="#1b8a5a" opacity=".5" stroke="#1b8a5a" stroke-width="1.5"/><path d="M7 22 L11 13 L17 13 L21 22 Z" fill="#1b8a5a" opacity=".2" stroke="#1b8a5a" stroke-width="1.5"/><circle cx="14" cy="19" r="2.5" fill="#1b8a5a" opacity=".5"/><line x1="11" y1="4" x2="17" y2="4" stroke="#1b8a5a" stroke-width="1.8"/></svg></div>
         <div class="fn">Science Labs</div>
         <div class="fd">Physics, Chemistry &amp; Biology labs with modern apparatus. Hands-on experiments per curriculum.</div>
-        <div class="fp">3 Separate Labs</div>
+        <div class="fp">1 Labs</div>
       </div>
       <div class="fac-card reveal" style="--tc:#f5a623;--ib:#fff3d4" onclick="showFac('📚 School Library','5,000+ books including all textbooks, references, encyclopedias, literature, competitive exam guides, and daily newspapers.')">
         <div class="fib"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="4" y="7" width="5" height="15" rx="1.5" fill="#f5a623"/><rect x="11" y="5" width="5" height="17" rx="1.5" fill="#f5a623" opacity=".8"/><rect x="18" y="8" width="5" height="13" rx="1.5" fill="#f5a623" opacity=".6"/><rect x="3" y="22" width="22" height="2.5" rx="1" fill="#e8a020"/></svg></div>
@@ -824,7 +908,7 @@ a{text-decoration:none;color:inherit;}
       </div>
 
       <div class="pr-np">
-        <strong>Mr Khalil Mohammad </strong>
+        <strong>Mr Khalil Mohammad</strong>
         <span>Principal, Govt. HSS Vehil</span>
       </div>
     </div>
@@ -867,7 +951,7 @@ a{text-decoration:none;color:inherit;}
           <div class="crow"><div class="cricn"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2C7.13 2 4 5.13 4 9c0 5.25 7 11 7 11s7-5.75 7-11c0-3.87-3.13-7-7-7z" fill="#1565c0" opacity=".7"/><circle cx="11" cy="9" r="2.5" fill="white"/></svg></div><div><div class="crl">Address</div><div class="crv">Govt. HSS Vehil<br>Vehil, District Shopian, J&amp;K</div></div></div>
           <div class="crow"><div class="cricn"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M6 4C4.34 4 3 5.34 3 7v1.5c0 6.35 5.15 11.5 11.5 11.5H16c1.66 0 3-1.34 3-3v-1.2a1 1 0 00-.68-.95l-3-1a1 1 0 00-1.1.4l-.9 1.3A9.51 9.51 0 018.45 8.68l1.3-.9a1 1 0 00.4-1.1l-1-3A1 1 0 008.2 3H6z" fill="#1565c0" opacity=".6"/></svg></div><div><div class="crl">School Helpline</div><div class="crv">+91 1933 460 605</div></div></div>
           <div class="crow"><div class="cricn"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="4" width="16" height="14" rx="3" fill="#1565c0" opacity=".15" stroke="#1565c0" stroke-width="1.5"/><path d="M3 7l8 6 8-6" stroke="#1565c0" stroke-width="1.5"/></svg></div><div><div class="crl">Online Updates</div><div class="crv">HSS Vehil — Facebook Page</div></div></div>
-          <div class="crow"><div class="cricn"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#1565c0" stroke-width="1.5" fill="none"/><polyline points="11,6 11,11 14,13" stroke="#1565c0" stroke-width="1.5" stroke-linecap="round"/></svg></div><div><div class="crl">Office Hours</div><div class="crv">Mon – Sat · 9:00 AM – 4:00 PM</div></div></div>
+          <div class="crow"><div class="cricn"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#1565c0" stroke-width="1.5" fill="none"/><polyline points="11,6 11,11 14,13" stroke="#1565c0" stroke-width="1.5" stroke-linecap="round"/></svg></div><div><div class="crl">Office Hours</div><div class="crv">Mon – Sat · 9:00 AM – 3:30 PM</div></div></div>
         </div>
         <div class="mapbox" onclick="Swal.fire({icon:'info',title:'📍 School Location',html:'<b>Govt. HSS Vehil</b><br>Vehil, District Shopian, Jammu &amp; Kashmir<br><br><span style=\'color:#666;font-size:13px\'>Open Google Maps for directions.</span>',confirmButtonColor:'#1565c0',confirmButtonText:'Got it'})">
           <div class="mpn">📍</div>
@@ -987,6 +1071,91 @@ a{text-decoration:none;color:inherit;}
 <script>
 // Stars
 (()=>{const c=document.getElementById('stars');for(let i=0;i<55;i++){const s=document.createElement('div');s.className='star';s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;animation-delay:${Math.random()*4}s;animation-duration:${2+Math.random()*3}s;`;c.appendChild(s);}})();
+
+// ── LIVE DESK CLOCK (IST, 12-hour format) ──
+(function liveDeskClock(){
+  const DAYS  = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const MONTHS= ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  // School schedule periods (24h internal, displayed 12h)
+  const PERIODS=[
+    {start:0,   end:540,  label:'Office closed',        next:'9:00 AM', open:false},
+    {start:540, end:555,  label:'Morning Assembly',      next:null,      open:true },
+    {start:555, end:660,  label:'Period 1 & 2',          next:null,      open:true },
+    {start:660, end:690,  label:'Period 3',              next:null,      open:true },
+    {start:690, end:750,  label:'Period 4 & 5',          next:null,      open:true },
+    {start:750, end:780,  label:'Lunch Break',           next:null,      open:true },
+    {start:780, end:855,  label:'Period 6 & 7',          next:null,      open:true },
+    {start:855, end:1440, label:'School Closed',         next:'9:00 AM', open:false},
+  ];
+  // Sunday always closed
+  function getSunday(day){return day===0;}
+
+  function pad(n){return String(n).padStart(2,'0');}
+  function fmt12(h,m,s){
+    const ampm=h<12?'AM':'PM';
+    const h12=h%12||12;
+    return `${pad(h12)}:${pad(m)}:${pad(s)} ${ampm}`;
+  }
+  function fmtDate(d){
+    return `${DAYS[d.getDay()]}, ${pad(d.getDate())} ${MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+  }
+
+  function tick(){
+    // IST = UTC + 5:30
+    const now=new Date();
+    const utc=now.getTime()+now.getTimezoneOffset()*60000;
+    const ist=new Date(utc+330*60000);
+
+    const h=ist.getHours(), m=ist.getMinutes(), s=ist.getSeconds();
+    const mins=h*60+m;
+    const day=ist.getDay(); // 0=Sun,6=Sat
+
+    // Update clock & date
+    const clkEl=document.getElementById('ops-clock');
+    const dtEl =document.getElementById('ops-date');
+    if(clkEl) clkEl.textContent=fmt12(h,m,s);
+    if(dtEl)  dtEl.textContent =fmtDate(ist);
+
+    // Find period
+    const ledEl  =document.getElementById('state-led');
+    const stateEl=document.getElementById('state-text');
+    const perEl  =document.getElementById('current-period');
+    if(!ledEl||!stateEl||!perEl) return;
+
+    // Saturday half-day (closes 1:00 PM = 780 mins)
+    const isSat=day===6;
+    const isSun=day===0;
+    let isOpen=false, periodLabel='', nextInfo='';
+
+    if(isSun){
+      isOpen=false; periodLabel='Holiday — Sunday'; nextInfo='9:00 AM Monday';
+    } else {
+      for(const p of PERIODS){
+        if(mins>=p.start && mins<p.end){
+          // Saturday: after 12:30 PM (750 min) = closed
+          if(isSat && mins>=750){
+            isOpen=false; periodLabel='Saturday — Early Close'; nextInfo='9:00 AM Monday';
+          } else {
+            isOpen=p.open;
+            periodLabel=p.label;
+            nextInfo=p.next?`Next Session: ${p.next}`:'In Progress';
+          }
+          break;
+        }
+      }
+    }
+
+    // Update UI
+    ledEl.className=`led-dot ${isOpen?'green-pulse':'red-pulse'}`;
+    stateEl.textContent=isOpen?'🟢 School is Open':'🔴 School is Closed';
+    stateEl.style.color=isOpen?'#10b981':'#ef4444';
+    perEl.textContent=isOpen?periodLabel:`${periodLabel} (${nextInfo})`;
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();
 
 // Nav scroll
 const nav=document.getElementById('nav');
